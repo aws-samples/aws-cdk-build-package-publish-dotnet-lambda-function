@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "fernandoescolar.vscode-solution-explorer",
+        "ms-dotnettools.csharp",
+        "jorgeserrano.vscode-csharp-snippets",
+        "k--kato.docomment",
+        "fudge.auto-using",
+        "tdallau-csharpextensions.csharpextensions"
+    ]
+}
