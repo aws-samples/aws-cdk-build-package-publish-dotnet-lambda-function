@@ -13,7 +13,7 @@ To recreate this same project structure execute the following commands
     cd apps
     dotnet new lambda.EmptyTopLevelFunction -o .    / --name FunctionOne
     dotnet new lambda.EmptyTopLevelFunction -o .    / --name FunctionTwo
-    dotnet new lambda.EmptyTopLevelFunction -o .    / --name FunctionThree
+    dotnet new serverless.AspNetCoreMinimalAPI -o .    / --name FunctionThree
     cd ..
     ```
 
