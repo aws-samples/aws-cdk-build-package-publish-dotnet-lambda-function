@@ -71,6 +71,57 @@
                 "${workspaceFolder}/apps/src/FunctionThree/FunctionThree.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build:FunctionOne",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/apps/src/FunctionOne/FunctionOne.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish:FunctionOne",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/apps/src/FunctionOne/FunctionOne.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch:FunctionOne",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/apps/src/FunctionOne/FunctionOne.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build:ALL",
+            "type": "shell",
+            "command": "echo 'Build all projects'",
+            "dependsOn": [
+                "build:FunctionOne",
+                "build:FunctionTwo",
+                "build:FunctionThree"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

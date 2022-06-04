@@ -29,8 +29,8 @@ namespace Infra
                 Runtime = Runtime.DOTNET_6,
                 MemorySize = 1024,
                 LogRetention = RetentionDays.ONE_DAY,
-                Handler = "FunctionThree",
-                Code = Code.FromAsset("../apps/src/FunctionThree/", new Amazon.CDK.AWS.S3.Assets.AssetOptions
+                Handler = "FunctionOne",
+                Code = Code.FromAsset("../apps/src/FunctionOne/", new Amazon.CDK.AWS.S3.Assets.AssetOptions
                 {
                     Bundling = buildOption
                 }),
@@ -48,18 +48,40 @@ namespace Infra
                 }),
             });
 
+            var lambdaFunctionThree = new Function(this, "my-funcThree", new FunctionProps
+            {
+                Runtime = Runtime.DOTNET_6,
+                MemorySize = 1024,
+                LogRetention = RetentionDays.ONE_DAY,
+                Handler = "FunctionThree",
+                Code = Code.FromAsset("../apps/src/FunctionThree/", new Amazon.CDK.AWS.S3.Assets.AssetOptions
+                {
+                    Bundling = buildOption
+                }),
+            });
+
+            //Proxy all request from the root path "/" to Lambda Function One
             var restAPI = new LambdaRestApi(this, "Endpoint", new LambdaRestApiProps
             {
                 Handler = lambdaFunctionOne,
                 Proxy = true,
             });
 
-            var resourceF2 = restAPI.Root.AddResource("functiontwo", new ResourceOptions
+            //Proxy all request from path "/functiontwo" to Lambda Function Two
+            var apiFunctionTwo = restAPI.Root.AddResource("functiontwo", new ResourceOptions
             {
                 DefaultIntegration = new LambdaIntegration(lambdaFunctionTwo)
             });
-            resourceF2.AddMethod("ANY");
-            resourceF2.AddProxy();
+            apiFunctionTwo.AddMethod("ANY");
+            apiFunctionTwo.AddProxy();
+
+            //Proxy all request from path "/functionthree" to Lambda Function Two
+            var apiFunctionThree = restAPI.Root.AddResource("functionthree", new ResourceOptions
+            {
+                DefaultIntegration = new LambdaIntegration(lambdaFunctionThree)
+            });
+            apiFunctionThree.AddMethod("ANY");
+            apiFunctionThree.AddProxy();
         }
     }
 }
