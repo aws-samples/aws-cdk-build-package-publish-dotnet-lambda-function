@@ -20,27 +20,25 @@
                 "/Views": "${workspaceFolder}/apps/src/FunctionTwo/Views"
             }
         },
-
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-            "name": ".NET Core Launch (console)",
+            "name": "FunctionThree: .NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/apps/src/FunctionOne/bin/Debug/net6.0/FunctionOne.dll",
+            "preLaunchTask": "build:FunctionThree",
+            "program": "${workspaceFolder}/apps/src/FunctionThree/bin/Debug/net6.0/FunctionThree.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/apps/src/FunctionOne",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "internalConsole",
-            "stopAtEntry": false
+            "cwd": "${workspaceFolder}/apps/src/FunctionThree",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/apps/src/FunctionThree/Views"
+            }
         },
-        {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
-            "request": "attach"
-        }
     ]
 }
