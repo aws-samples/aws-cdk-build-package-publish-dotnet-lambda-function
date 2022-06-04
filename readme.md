@@ -11,9 +11,9 @@ To recreate this same project structure execute the following commands
     ```bash
     mkdir apps
     cd apps
-    dotnet new lambda.EmptyTopLevelFunction -o .    / --name FunctionOne
-    dotnet new lambda.EmptyTopLevelFunction -o .    / --name FunctionTwo
-    dotnet new serverless.AspNetCoreMinimalAPI -o .    / --name FunctionThree
+    dotnet new lambda.EmptyTopLevelFunction -o ./ --name FunctionOne
+    dotnet new lambda.EmptyTopLevelFunction -o ./ --name FunctionTwo
+    dotnet new serverless.AspNetCoreMinimalAPI -o ./ --name FunctionThree
     cd ..
     ```
 
