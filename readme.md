@@ -6,13 +6,13 @@ To-do: Add summary
 
 To recreate this same project structure execute the following commands
 
-1. Create the .NET6 C# Top Level Lambda Function 
+1. Create the .NET6 C# Top Level Lambda Function
 
     ```bash
     mkdir apps
     cd apps
     dotnet new lambda.EmptyTopLevelFunction -o ./ --name FunctionOne
-    dotnet new lambda.EmptyTopLevelFunction -o ./ --name FunctionTwo
+    dotnet new serverless.AspNetCoreMinimalAPI -o ./ --name FunctionTwo
     dotnet new serverless.AspNetCoreMinimalAPI -o ./ --name FunctionThree
     cd ..
     ```

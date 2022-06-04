@@ -1,7 +1,6 @@
 {
     "version": "2.0.0",
-    "tasks": [
-        {
+    "tasks": [{
             "label": "build",
             "command": "dotnet",
             "type": "process",
@@ -34,6 +33,42 @@
                 "run",
                 "--project",
                 "${workspaceFolder}/apps/src/FunctionOne/FunctionOne.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build:FunctionTwo",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/apps/src/FunctionTwo/FunctionTwo.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish:FunctionTwo",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/apps/src/FunctionTwo/FunctionTwo.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch:FunctionTwo",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/apps/src/FunctionTwo/FunctionTwo.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

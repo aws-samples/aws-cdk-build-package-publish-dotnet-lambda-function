@@ -1,6 +1,26 @@
 {
     "version": "0.2.0",
-    "configurations": [
+    "configurations": [{
+            "name": "FunctionTwo: .NET Core Launch (web)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build:FunctionTwo",
+            "program": "${workspaceFolder}/apps/src/FunctionTwo/bin/Debug/net6.0/FunctionTwo.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/apps/src/FunctionTwo",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/apps/src/FunctionTwo/Views"
+            }
+        },
+
         {
             // Use IntelliSense to find out which attributes exist for C# debugging
             // Use hover for the description of the existing attributes
