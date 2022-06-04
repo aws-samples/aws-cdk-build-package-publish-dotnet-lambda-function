@@ -1,6 +1,16 @@
 {
     "version": "2.0.0",
     "tasks": [{
+            "label": "clean:FunctionTwo",
+            "command": "rm",
+            "type": "shell",
+            "args": [
+                "-rf",
+                "${workspaceFolder}/apps/src/FunctionTwo/bin",
+                "${workspaceFolder}/apps/src/FunctionTwo/obj",
+            ],
+        },
+        {
             "label": "build:FunctionTwo",
             "command": "dotnet",
             "type": "process",
@@ -37,6 +47,16 @@
             "problemMatcher": "$msCompile"
         },
         {
+            "label": "clean:FunctionThree",
+            "command": "rm",
+            "type": "shell",
+            "args": [
+                "-rf",
+                "${workspaceFolder}/apps/src/FunctionThree/bin",
+                "${workspaceFolder}/apps/src/FunctionThree/obj",
+            ]
+        },
+        {
             "label": "build:FunctionThree",
             "command": "dotnet",
             "type": "process",
@@ -71,6 +91,16 @@
                 "${workspaceFolder}/apps/src/FunctionThree/FunctionThree.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "clean:FunctionOne",
+            "command": "rm",
+            "type": "shell",
+            "args": [
+                "-rf",
+                "${workspaceFolder}/apps/src/FunctionOne/bin",
+                "${workspaceFolder}/apps/src/FunctionOne/obj",
+            ]
         },
         {
             "label": "build:FunctionOne",
@@ -116,6 +146,21 @@
                 "build:FunctionOne",
                 "build:FunctionTwo",
                 "build:FunctionThree"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "clean:ALL",
+            "type": "shell",
+            "command": "echo 'Build all projects'",
+            "dependsOn": [
+                "clean:FunctionOne",
+                "clean:FunctionTwo",
+                "clean:FunctionThree"
             ],
             "problemMatcher": [],
             "group": {
