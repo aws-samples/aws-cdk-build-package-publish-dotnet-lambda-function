@@ -2,9 +2,11 @@
 
 To-do: Add summary
 
-## How does the lambda project got created?
+## Prerequisite Tools
 
-To recreate this same project structure execute the following commands
+## How does these project got created?
+
+To recreate this same project structure, make sure you've all the prerequisite tools installed and execute the following commands
 
 1. Create the .NET6 C# Top Level Lambda Function
 
