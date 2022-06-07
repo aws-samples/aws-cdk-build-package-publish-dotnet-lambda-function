@@ -8,7 +8,7 @@ This guide content the step-by-step to help you re-create similar project struct
 
 To recreate this same project structure, make sure you've all the prerequisite tools installed and execute the following commands
 
-1. Create the .NET6 C# Top Level Lambda Function
+1. Create the Minimal API ASP.NET6 C# Lambda Function
 
     ```bash
     mkdir apps
