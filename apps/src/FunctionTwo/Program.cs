@@ -15,7 +15,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UsePathBase(new PathString("/functiontwo"));
-app.MapGet("/", () => "Welcome to running ASP.NET Core Minimal API on AWS Lambda");
+app.MapGet("/", () => "ASP.NET Core API: aws-cdk-build-package-publish-dotnet-lambda-function - functionTwo");
 app.UseRouting();
 
 app.Run();
