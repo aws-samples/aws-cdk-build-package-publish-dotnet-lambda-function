@@ -82,6 +82,8 @@ namespace Infra
             });
             apiFunctionThree.AddMethod("ANY");
             apiFunctionThree.AddProxy();
+
+            new CfnOutput(this, "apigwtarn", new CfnOutputProps { Value = restAPI.ArnForExecuteApi() });
         }
     }
 }
