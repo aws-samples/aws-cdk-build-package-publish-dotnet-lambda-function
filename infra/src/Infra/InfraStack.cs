@@ -75,7 +75,7 @@ namespace Infra
             apiFunctionTwo.AddMethod("ANY");
             apiFunctionTwo.AddProxy();
 
-            //Proxy all request from path "/functionthree" to Lambda Function Two
+            //Proxy all request from path "/functionthree" to Lambda Function Three
             var apiFunctionThree = restAPI.Root.AddResource("functionthree", new ResourceOptions
             {
                 DefaultIntegration = new LambdaIntegration(lambdaFunctionThree)
