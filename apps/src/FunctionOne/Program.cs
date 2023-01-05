@@ -14,6 +14,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-app.MapGet("/", () => "Welcome to running ASP.NET Core Minimal API on AWS Lambda");
+app.MapGet("/", () => "Welcome to running ASP.NET Core Minimal API on AWS Lambda - Function One!");
 
 app.Run();

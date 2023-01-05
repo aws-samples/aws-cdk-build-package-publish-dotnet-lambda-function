@@ -15,7 +15,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UsePathBase(new PathString("/functionthree"));
-app.MapGet("/", () => "Welcome to running ASP.NET Core Minimal API on AWS Lambda");
+app.MapGet("/", () => "Welcome to running ASP.NET Core Minimal API on AWS Lambda - Function Three!");
 app.UseRouting();
 
 app.Run();
