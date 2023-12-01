@@ -14,7 +14,7 @@ namespace Infra
             var lambdaFunctionOne = new Function(this, "my-funcOne", new FunctionProps
             {
                 Runtime = Runtime.DOTNET_6,
-                MemorySize = 1024,
+                MemorySize = 128,
                 LogRetention = RetentionDays.ONE_DAY,
                 Handler = "FunctionOne",
                 Code = Code.FromAsset("/tmp/FunctionOne.zip")
@@ -23,7 +23,7 @@ namespace Infra
             var lambdaFunctionTwo = new Function(this, "my-funcTwo", new FunctionProps
             {
                 Runtime = Runtime.DOTNET_6,
-                MemorySize = 1024,
+                MemorySize = 128,
                 LogRetention = RetentionDays.ONE_DAY,
                 Handler = "FunctionTwo",
                 Code = Code.FromAsset("/tmp/FunctionTwo.zip")
@@ -32,7 +32,7 @@ namespace Infra
             var lambdaFunctionThree = new Function(this, "my-funcThree", new FunctionProps
             {
                 Runtime = Runtime.DOTNET_6,
-                MemorySize = 1024,
+                MemorySize = 128,
                 LogRetention = RetentionDays.ONE_DAY,
                 Handler = "FunctionThree",
                 Code = Code.FromAsset("/tmp/FunctionThree.zip")
