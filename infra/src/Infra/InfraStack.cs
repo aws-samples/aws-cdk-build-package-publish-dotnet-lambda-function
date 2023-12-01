@@ -10,19 +10,6 @@ namespace Infra
     {
         internal InfraStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
         {
-            var buildOption = new BundlingOptions()
-            {
-                Image = Runtime.DOTNET_6.BundlingImage,
-                User = "root",
-                OutputType = BundlingOutput.ARCHIVED,
-                Command = new string[]{
-               "/bin/sh",
-                "-c",
-                " dotnet tool install -g Amazon.Lambda.Tools"+
-                " && dotnet build"+
-                " && dotnet lambda package --output-package /asset-output/function.zip"
-                }
-            };
 
             var lambdaFunctionOne = new Function(this, "my-funcOne", new FunctionProps
             {
@@ -30,10 +17,7 @@ namespace Infra
                 MemorySize = 1024,
                 LogRetention = RetentionDays.ONE_DAY,
                 Handler = "FunctionOne",
-                Code = Code.FromAsset("../apps/src/FunctionOne/", new Amazon.CDK.AWS.S3.Assets.AssetOptions
-                {
-                    Bundling = buildOption
-                }),
+                Code = Code.FromAsset("/tmp/FunctionOne.zip")
             });
 
             var lambdaFunctionTwo = new Function(this, "my-funcTwo", new FunctionProps
@@ -42,10 +26,7 @@ namespace Infra
                 MemorySize = 1024,
                 LogRetention = RetentionDays.ONE_DAY,
                 Handler = "FunctionTwo",
-                Code = Code.FromAsset("../apps/src/FunctionTwo/", new Amazon.CDK.AWS.S3.Assets.AssetOptions
-                {
-                    Bundling = buildOption
-                }),
+                Code = Code.FromAsset("/tmp/FunctionTwo.zip")
             });
 
             var lambdaFunctionThree = new Function(this, "my-funcThree", new FunctionProps
@@ -54,10 +35,7 @@ namespace Infra
                 MemorySize = 1024,
                 LogRetention = RetentionDays.ONE_DAY,
                 Handler = "FunctionThree",
-                Code = Code.FromAsset("../apps/src/FunctionThree/", new Amazon.CDK.AWS.S3.Assets.AssetOptions
-                {
-                    Bundling = buildOption
-                }),
+                Code = Code.FromAsset("/tmp/FunctionThree.zip")
             });
 
             //Proxy all request from the root path "/" to Lambda Function One
