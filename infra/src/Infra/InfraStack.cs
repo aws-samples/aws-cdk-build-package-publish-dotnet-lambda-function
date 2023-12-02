@@ -3,6 +3,7 @@ using Constructs;
 using Amazon.CDK.AWS.APIGateway;
 using Amazon.CDK.AWS.Lambda;
 using Amazon.CDK.AWS.Logs;
+using Amazon.CDK.AWS.DynamoDB;
 
 namespace Infra
 {
@@ -60,6 +61,19 @@ namespace Infra
             });
             apiFunctionThree.AddMethod("ANY");
             apiFunctionThree.AddProxy();
+
+            var table = new Table(this, "webhooks-table", new TableProps {
+            PartitionKey = new Attribute {
+                Name = "PK",
+                Type = AttributeType.STRING
+            }, BillingMode = BillingMode.PAY_PER_REQUEST,
+            SortKey = new Attribute {
+                Name = "SK",
+                Type = AttributeType.STRING
+            }
+            });
+
+            table.GrantFullAccess(lambdaFunctionOne);
 
             new CfnOutput(this, "apigwtarn", new CfnOutputProps { Value = restAPI.ArnForExecuteApi() });
         }
