@@ -1,3 +1,4 @@
+using System.Text;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FunctionOne.Controllers;
@@ -14,10 +15,22 @@ public class Capture : ControllerBase
     }
 
     [HttpPost("c/{x}/{y}")]
-    public int C(int x, int y, HttpRequest request)    
+    public async Task<int> C(int x, int y)    
     {
 
-        _logger.LogInformation($"{request.Body}");
+        string bodyString = "";
+
+        using (var reader = new StreamReader(
+            HttpContext.Request.Body,
+            encoding: Encoding.UTF8,
+            detectEncodingFromByteOrderMarks: false
+        ))
+        {
+            bodyString = await reader.ReadToEndAsync();
+        }
+
+        _logger.LogInformation($"body as string {bodyString}");
+        //_logger.LogInformation($"{request.Body}");
 
         _logger.LogInformation($"{x} plus {y} is {x + y}");
 
