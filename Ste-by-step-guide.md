@@ -7,8 +7,9 @@ This guide content the step-by-step to help you re-create similar project struct
 ## How does these project got created?
 
 To recreate this same project structure, make sure you've all the prerequisite tools installed and execute the following commands
-
-1. Create the Minimal API ASP.NET6 C# Lambda Function
+1. Install the Amazon.Lambda.Templates from nuget
+    dotnet new install Amazon.Lambda.Templates
+2. Create the Minimal API ASP.NET6 C# Lambda Function
 
     ```bash
     mkdir apps
@@ -19,15 +20,16 @@ To recreate this same project structure, make sure you've all the prerequisite t
     cd ..
     ```
 
-1. Create the .NET CDK project for Infrastructure as Code
+3. Create the .NET CDK project for Infrastructure as Code
 
     ```bash
+    mkdir infra
     cd infra
     cdk init app --language=csharp
     cd ..
     ```
 
-1. Create the Visual Studio Solution file and add the Apps and Infra projects to the Solution
+4. Create the Visual Studio Solution file and add the Apps and Infra projects to the Solution
 
     ```bash
     dotnet new sln --name DemoSolution
