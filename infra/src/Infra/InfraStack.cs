@@ -12,7 +12,7 @@ namespace Infra
         {
             var buildOption = new BundlingOptions()
             {
-                Image = Runtime.DOTNET_6.BundlingImage,
+                Image = Runtime.DOTNET_8.BundlingImage,
                 User = "root",
                 OutputType = BundlingOutput.ARCHIVED,
                 Command = new string[]{
@@ -26,7 +26,7 @@ namespace Infra
 
             var lambdaFunctionOne = new Function(this, "my-funcOne", new FunctionProps
             {
-                Runtime = Runtime.DOTNET_6,
+                Runtime = Runtime.DOTNET_8,
                 MemorySize = 1024,
                 LogRetention = RetentionDays.ONE_DAY,
                 Handler = "FunctionOne",
@@ -38,7 +38,7 @@ namespace Infra
 
             var lambdaFunctionTwo = new Function(this, "my-funcTwo", new FunctionProps
             {
-                Runtime = Runtime.DOTNET_6,
+                Runtime = Runtime.DOTNET_8,
                 MemorySize = 1024,
                 LogRetention = RetentionDays.ONE_DAY,
                 Handler = "FunctionTwo",
@@ -50,7 +50,7 @@ namespace Infra
 
             var lambdaFunctionThree = new Function(this, "my-funcThree", new FunctionProps
             {
-                Runtime = Runtime.DOTNET_6,
+                Runtime = Runtime.DOTNET_8,
                 MemorySize = 1024,
                 LogRetention = RetentionDays.ONE_DAY,
                 Handler = "FunctionThree",
@@ -83,7 +83,7 @@ namespace Infra
             apiFunctionThree.AddMethod("ANY");
             apiFunctionThree.AddProxy();
 
-            new CfnOutput(this, "apigwtarn", new CfnOutputProps { Value = restAPI.ArnForExecuteApi() });
+            _ = new CfnOutput(this, "apigwtarn", new CfnOutputProps { Value = restAPI.ArnForExecuteApi() });
         }
     }
 }
